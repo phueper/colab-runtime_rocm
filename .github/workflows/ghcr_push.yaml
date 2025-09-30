@@ -2,6 +2,8 @@
 # TODO:
 # - token permissions:
 # - tag based on branch ?
+# - switch actions to versions instead of git shas
+# - remove/ cleanup comments
 name: Create and publish image to ghcr.io
 
 # Configures this workflow to run every time a change is pushed to the branch called `release`.
@@ -26,6 +28,7 @@ jobs:
       attestations: write
       id-token: write
     steps:
+      # this is needed to use the build cache
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Checkout repository
