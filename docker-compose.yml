@@ -1,0 +1,17 @@
+services:
+  local_runtime:
+#    image: europe-docker.pkg.dev/colab-images/public/runtime
+    build:
+      dockerfile: Dockerfile
+    env_file:
+      - colab-runtime.env
+    volumes:
+      - ./files/colab-runtime/content:/content
+    ports:
+      - 127.0.0.1:9000:8080
+    # for ROCM:
+    devices:
+      - "/dev/kfd:/dev/kfd"
+      - "/dev/dri:/dev/dri"
+    group_add:
+      - video
