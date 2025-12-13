@@ -2,7 +2,7 @@
 # TODO:
 # - token permissions:
 # - tag based on branch ?
-name: Create and publish a Docker image
+name: Create and publish image to ghcr.io
 
 # Configures this workflow to run every time a change is pushed to the branch called `release`.
 on:
@@ -22,12 +22,8 @@ jobs:
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
       contents: read
-#      packages: write
-#      attestations: write
-#      id-token: write
-      # disable for testing
-      packages: read
-      attestations: read
+      packages: write
+      attestations: write
       id-token: write
     steps:
       - name: Checkout repository
